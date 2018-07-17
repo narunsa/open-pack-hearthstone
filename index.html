@@ -1,0 +1,47 @@
+<html>
+
+<head></head>
+
+<body>
+</body>
+<script type="text/javascript">
+    var common = ["Mana Wyrm", "Mirror Entity", "Ice Barrier"]
+    var rare = ["Blizzard", "Vaporize", "Counterspell"]
+    var epic = ["Meteor", "Pyroblast", "Doomsayer"]
+    var legendary = ["Alexstrasza", "Malygos", "Ysera", "Deathwing"]
+
+    function random_card(percent = 100) {
+        // Between 1-100
+        console.log(percent)
+        randomRate = Math.floor((Math.random() * percent) + 1)
+        console.log(randomRate)
+        if (randomRate >= 1 && randomRate <= 5) {
+            // legendary 1-10 5%
+            console.log("legendary")
+        } else if (randomRate >= 6 && randomRate <= 20) {
+            // epic 11-30 15%
+            console.log("epic")
+        } else if (randomRate >= 21 && randomRate <= 50) {
+            // rare 31-50 30%
+            console.log("rare")
+        } else {
+            // common 50%
+            console.log("common")
+        }
+    }
+
+    function open_pack() {
+        for (i = 0; i < 5; i++) {
+            if (i < 4) {
+                random_card()
+            } else {
+                random_card(50)
+            }
+        }
+    }
+
+    open_pack()
+
+</script>
+
+</html>
