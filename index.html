@@ -5,40 +5,43 @@
 <body>
 </body>
 <script type="text/javascript">
-    var common = ["[c]Mana Wyrm", "[c]Mirror Entity", "[c]Ice Barrier"]
-    var rare = ["[r]Blizzard", "[r]Vaporize", "[r]Counterspell"]
-    var epic = ["[e]Meteor", "[e]Pyroblast", "[e]Doomsayer"]
-    var legendary = ["[l]Alexstrasza", "[l]Malygos", "[l]Ysera", "[l]Deathwing"]
+  var common = ["[c]Mana Wyrm", "[c]Mirror Entity", "[c]Ice Barrier"]
+  var rare = ["[r]Blizzard", "[r]Vaporize", "[r]Counterspell"]
+  var epic = ["[e]Meteor", "[e]Pyroblast", "[e]Doomsayer"]
+  var legendary = ["[l]Alexstrasza", "[l]Malygos", "[l]Ysera", "[l]Deathwing"]
 
-    function random_card(percent = 100) {
-        // Between 1-100
-        randomRate = Math.floor((Math.random() * percent) + 1)
-        if (randomRate >= 1 && randomRate <= 5) {
-            // legendary 1-5 5%
-            console.log(legendary[Math.floor(Math.random() * legendary.length)])
-        } else if (randomRate >= 6 && randomRate <= 20) {
-            // epic 11-30 15%
-            console.log(epic[Math.floor(Math.random() * epic.length)])
-        } else if (randomRate >= 21 && randomRate <= 50) {
-            // rare 31-50 30%
-            console.log(rare[Math.floor(Math.random() * rare.length)])
-        } else {
-            // common 50%
-            console.log(common[Math.floor(Math.random() * common.length)])
-        }
+  var commonCount = 0
+
+  function random_card(percent = 100) {
+    // Between 1-100
+    randomRate = Math.floor((Math.random() * percent) + 1)
+    if (randomRate >= 1 && randomRate <= 5) {
+      // legendary 1-5 5%
+      console.log(legendary[Math.floor(Math.random() * legendary.length)])
+    } else if (randomRate >= 6 && randomRate <= 20) {
+      // epic 11-30 15%
+      console.log(epic[Math.floor(Math.random() * epic.length)])
+    } else if (randomRate >= 21 && randomRate <= 50) {
+      // rare 31-50 30%
+      console.log(rare[Math.floor(Math.random() * rare.length)])
+    } else {
+      // common 50%
+      commonCount += 1
+      console.log(common[Math.floor(Math.random() * common.length)])
     }
+  }
 
-    function open_pack() {
-        for (i = 0; i < 5; i++) {
-            if (i < 4) {
-                random_card()
-            } else {
-                random_card(50)
-            }
-        }
+  function open_pack() {
+    for (i = 0; i < 5; i++) {
+      if (commonCount == 4) {
+        random_card(50)
+      } else {
+        random_card()
+      }
     }
+  }
 
-    open_pack()
+  open_pack()
 
 </script>
 
